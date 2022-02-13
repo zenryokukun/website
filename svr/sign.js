@@ -7,7 +7,6 @@ import crypto from "crypto";
 const __filename = fileURLToPath(import.meta.url);
 const here = path.dirname(__filename);
 const conf = path.join(here,"/conf/conf.json");
-console.log(conf);
 const {api_key,api_secret} = JSON.parse(fs.readFileSync(conf));
 
 export function getHeaders(){
