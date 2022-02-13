@@ -1,0 +1,9 @@
+#node_modules
+node_modules/
+
+#config file
+conf.json
+
+#back-up folders
+/BK*/
+bk/

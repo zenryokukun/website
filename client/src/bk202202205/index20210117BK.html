@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link href="src/modal.css" rel="stylesheet" type="text/css">
+        <link href="src/main.css" rel="stylesheet" type="text/css">
+        <link href="src/footer.css" rel="stylesheet" type="text/css">
+        <title>元気玉</title>
+    </head>
+    <body>
+        <!--modal contents. Not visible by default.
+            建玉一覧、物語、取引画面等-->
+        <div id="modal">
+			<div id="modal-content">
+			   <span id="close" class="close-mark">&times;</span>
+			   <div id="positions" class="modal-items"></div>
+			   <div id="stories" class="modal-items"></div>
+			   <div id="open-trade" class="modal-items">
+                    <div id="trade-msg" class="trade-rec">
+                    <span>新規取引メニュー</span>
+                    </div>
+                    <div id="trade-pwd" class="trade-rec">
+                       <div class="trade-item trade-label">
+                           <label for="password">決済用のパスワード</label>
+                       </div>
+                       <div id="pwd-items" class="trade-item">
+                           <input id="pwd-user" type="password" maxlength="8" name="password" pattern="^[0-9a-zA-Z]{4,8}">
+                           <img id="eye-img" src="eye.jpg" width="20px" height="10px">
+                        </div>
+                    </div>
+                    <div id="trade-pair" class="trade-rec">
+                        <div class="trade-item trade-label">
+                            <label for="pairs">銘柄</label>
+                        </div>
+                        <div class="trade-item">
+                            <select id="pair-select" name="pairs"></select>
+                        </div>
+                     </div>
+                    <div id="trade-amt" class="trade-rec">
+                        <div class="trade-item trade-label">
+                            <label for="amount">購入量</label>
+                        </div>
+                        <div class="trade-item">
+                            <input id="amt-user" type="text" name="amount">
+                        </div>
+                    </div>
+                    <div id="trade-least-amount" class="trade-rec">
+                        <div id="label-amount" class="trade-item"><span>（取引単位：</span></div>
+                        <div id="div-least" class="trade-item"><span id="least-amount">0.01</span><span>）</span></div>
+                    </div>
+                    <div id="trade-button">取引</div>
+                    <div id="precautions">
+                        <div id="precautions-title">Terms of Agreement</div>
+                        <div id="precautions-content">
+                            <ul id="trade-rule">
+                                <li>パスワードは決済の時に必要になります。</li>
+                                <li>一度に保有できる建玉は30万円程度とさせていただきます。</li>
+                                <li>取引による損失・利益は全力君に帰属します。</li>
+                                <li>許可なく全力君が決済することがあります。</li>
+                                <li>さぁ、一緒に壊しましょう、、、マーケットを！</li>
+                            </ul>
+                        </div>
+                    </div>
+               </div>
+			</div>
+        </div>
+        <!--main contents 
+            ポジション一覧、メッセージやリンク
+        -->
+        <div id="main-content">
+            <!--message-->
+            <div id="greet-frame">
+                <div id="greeting"">
+                    <div>地球の投資家達よ。。ほんのちょっとでいい。。！</div>
+                    <div>オラに元気を分けてくれ！</div>
+                </div>
+            </div>
+            <div class="flex-frame">
+				<!--評価額-->
+				<div class="eval-wrapper">
+                    <!--
+                    <div class="eval-item"><span>評価額:</span><span id="eval">0</span></div>
+                    <div class="eval-item"><span>取引可能額:</span><span id="avail">0</span></div>                    
+                    <div class="eval-item"><span>評価損益:</span><span id="profit">0</span></div>
+                    -->
+                    <div class="eval-item">
+                        <div>評価額:</div>
+                        <div id="eval">200,000</div>
+                    </div>
+                    <div class="eval-item">
+                        <div>取引可能額:</div>
+                        <div id="avail">170,000</div>
+                    </div>                    
+                    <div class="eval-item">
+                        <div>評価損益:</div>
+                        <div id="profit">1200</div>
+                    </div>                    
+                </div>
+                <!--銘柄 現在値 買建玉 売建玉-->
+                <!--ヘッダ行-->
+                <div id="pair-title" class="flex-wrapper-title">
+                    <div class="flex-div-element flex-img"><span>銘柄</span></div>
+                    <div class="flex-div-element flex-price"><span>現在値</span></div>
+                    <div class="flex-div-element flex-buy"><span>買玉</span></div>
+                    <div class="flex-div-element flex-sell"><span>売玉</span></div>
+                </div>
+                <!--通貨行-->
+                <div id="btc" class="flex-wrapper">
+                    <div class="flex-div-element flex-img"><img src="icon-BTC.svg" width=25 height=25 class="coin-image"></div>
+                    <div class="flex-div-element flex-price"><span id="BTC" class="current-price">6,000,000</span></div>
+                    <div class="flex-div-element flex-buy"><span class="buy-amount">0,0</span></div>
+                    <div class="flex-div-element flex-sell"><span class="sell-amount">0.0</span></div>
+                </div>
+                <div id="eth" class="flex-wrapper">
+                    <div class="flex-div-element flex-img"><img src="icon-ETH.svg" width=25 height=25 class="coin-image"></div>
+                    <div class="flex-div-element flex-price"><span id="ETH" class="current-price">500,000</span></div>
+                    <div class="flex-div-element flex-buy"><span class="buy-amount">0.5</span></div>
+                    <div class="flex-div-element flex-sell"><span class="sell-amount">1.4</span></div>
+                </div>
+                <div id="xrp" class="flex-wrapper">
+                    <div class="flex-div-element flex-img"><img src="icon-XRP.svg" width=25 height=25 class="coin-image"></div>
+                    <div class="flex-div-element flex-price"><span id="XRP" class="current-price">100</span></div>
+                    <div class="flex-div-element flex-buy"><span class="buy-amount">0.0</span></div>
+                    <div class="flex-div-element flex-sell"><span class="sell-amount">0.0</span></div>
+                </div>
+                <div id="bch" class="flex-wrapper">
+                    <div class="flex-div-element flex-img"><img src="icon-BCH.svg" width=25 height=25 class="coin-image"></div>
+                    <div class="flex-div-element flex-price"><span id="BCH" class="current-price">6,000,000</span></div>
+                    <div class="flex-div-element flex-buy"><span class="buy-amount">0.0</span></div>
+                    <div class="flex-div-element flex-sell"><span class="sell-amount">0.0</span></div>
+                </div>
+                <div id="ltc" class="flex-wrapper">
+                    <div class="flex-div-element flex-img"><img src="icon-LTC.svg" width=25 height=25 class="coin-image"></div>
+                    <div class="flex-div-element flex-price"><span id="LTC" class="current-price">6,000,000</span></div>
+                    <div class="flex-div-element flex-buy"><span class="buy-amount">2.5</span></div>
+                    <div class="flex-div-element flex-sell"><span class="sell-amount">1.4</span></div>
+                </div>
+                <!--物語モーダルリンク-->
+                <div id="story-link" class="modal-link">物語</div>
+                <!--新規取引モーダルリンク-->
+                <div id="trade-link" class="modal-link">新規取引</div>
+            </div>
+        </div>
+        <footer id="footer-content">
+            <div id="footer-item-wrapper">
+                <div id="footer-item-about">
+                    About全力君
+                </div>
+                <div id="footer-item-message">
+                    <q>Revolutionこそevolution唯一のsolutionだっ!!!<br>
+                    辞さない...destructionさえも...!</q>
+                </div>
+                <div>
+                    <a href="https://twitter.com/zenryoku_kun0"><img src="twitter-logo.png" alt="https://twitter.com/zenryoku_kun0" width=30 height=30></a>
+                </div>
+            </div>
+        </footer>
+		
+        <script src="/src/client.js" type="module"></script>
+    </body>
+
+</html>

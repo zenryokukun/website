@@ -1,0 +1,21 @@
+header,
+footer {
+    text-align: center;
+    /*background-color:#607D8B;*/
+    background-color:#0097A7;
+}
+
+footer {
+    margin-top:auto;
+    color:aliceblue;
+}
+
+
+#footer-item-about {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+#footer-item-message {
+    font-style: italic;
+}
