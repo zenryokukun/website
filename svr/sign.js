@@ -1,10 +1,13 @@
 import fs from 'fs';
-import {URL} from "url";
+//import {URL} from "url";
+import { fileURLToPath } from 'url';
 import path from "path";
 import crypto from "crypto";
 
-const here = path.dirname(new URL(import.meta.url).pathname).slice(1);
-const conf = here + "/conf/conf.json";
+const __filename = fileURLToPath(import.meta.url);
+const here = path.dirname(__filename);
+const conf = path.join(here,"/conf/conf.json");
+console.log(conf);
 const {api_key,api_secret} = JSON.parse(fs.readFileSync(conf));
 
 export function getHeaders(){
