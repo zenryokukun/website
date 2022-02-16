@@ -258,7 +258,6 @@ function initModalPositions(){
 					for (const pos of positions){
 						const {symbol,size,side,price,lossGain,positionId} = pos;
 						const aste = _isMyPosition(positionId,myData) ? "*" : "";
-						console.log(positionId);
 						const rowNo = i.toString() + aste;
 						const frame = createPositionDetail(symbol.slice(0,3),side,size,parseInt(price),parseInt(lossGain),rowNo);
 						/**clickで決済確認ダイアログ開く */
@@ -919,6 +918,7 @@ function deleteContentById(id){
 function initYourPosition(){
 	/**storageにある存在しないポジションを削除する */
 	const localData = storage.parse();
+	if (!localData) return null;
 	for(const data of localData){
 		const id = data["id"];
 		const bool = details.findById(id);
