@@ -226,6 +226,7 @@ function createPositionDetail(pair,side,size,price,prof,row){
 }
 
 function _isMyPosition(id,data){
+	if (!data) return false;
 	return data.filter(elem => elem.id == id).length > 0;
 }
 
