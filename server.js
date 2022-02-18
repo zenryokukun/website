@@ -27,7 +27,17 @@ function defaultResolve(thisResponse,apiResponse){
     }
 }
 
+/*
 app.use(helmet());
+app.use(
+    helmet.contentSecurityPolicy({
+        directives:{
+            connectSrc:["wss://api.coin.z.com/ws/public/v1"]
+        }
+    })
+);
+*/
+
 app.use(express.static("img"));
 app.use(express.static("client"));
 //app.use(express.static("svr"));
@@ -35,12 +45,12 @@ app.use(express.json());
 
 /**ROUTING */
 app.get("/",(req,res) => {
-	const file = path.join(__dirname,"client","index.html");
+    const file = path.join(__dirname,"client","index.html");
 	res.sendFile(file);
 });
 
 app.get("/ticker",(req,res)=>{
-	api("ticker")
+    api("ticker")
     .then(apires => defaultResolve(res,apires))
     .catch(err => console.log(err))
 });
