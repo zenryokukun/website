@@ -868,7 +868,11 @@ function closeMyList(){
 
 
 function initModal(){
-
+	function _hideContents(){
+		document.getElementById("positions").display = "none";
+		document.getElementById("stories").display = "none";
+		document.getElementById("open-trade").display = "none";
+	}
 	/*modal閉じる処理。modal-contentと重なっていない部分（枠外）をクリックすると発動
 		display:none
 	*/
@@ -878,6 +882,7 @@ function initModal(){
 
 		if (e.target === modal) {
 			e.target.style.display = "none";
+			_hideContents();
 			return;
 		}
 
@@ -895,6 +900,7 @@ function initModal(){
 			const modalMyList = document.getElementById("modal-my-list");
 			if (modal.style.display === "block"){
 				modal.style.display = "none";
+				_hideContents();
 			}
 			if (modalMyList.style.display === "block"){
 				closeMyList();
