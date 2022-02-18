@@ -253,7 +253,7 @@ function initModalPositions(){
 					//create details
 					//localStorageを取得し、自分のポジションに*を付与
 					const myData = storage.parse();
-					console.log(myData);
+					
 					let i = 1;
 					for (const pos of positions){
 						const {symbol,size,side,price,lossGain,positionId} = pos;
@@ -875,7 +875,6 @@ function initModal(){
 		pos.style.display = "none";
 		sty.style.display = "none";
 		opt.style.display = "none";
-		console.log(opt);
 	}
 	/*modal閉じる処理。modal-contentと重なっていない部分（枠外）をクリックすると発動
 		display:none
