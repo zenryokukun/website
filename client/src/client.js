@@ -869,9 +869,13 @@ function closeMyList(){
 
 function initModal(){
 	function _hideContents(){
-		document.getElementById("positions").display = "none";
-		document.getElementById("stories").display = "none";
-		document.getElementById("open-trade").display = "none";
+		const pos = document.getElementById("positions");
+		const sty = document.getElementById("stories");
+		const opt = document.getElementById("open-trade");
+		pos.style.display = "none";
+		sty.style.display = "none";
+		opt.style.display = "none";
+		console.log(opt);
 	}
 	/*modal閉じる処理。modal-contentと重なっていない部分（枠外）をクリックすると発動
 		display:none
