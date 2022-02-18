@@ -37,6 +37,10 @@ div#modal-content {
     overflow-y: auto;
 }
 
+#positions,#stories,#open-trade {
+    display:none;
+}
+
 /*confirm modal-content*/
 #confirm,#close-confirm {
     padding:0;
