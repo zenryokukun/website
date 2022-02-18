@@ -27,16 +27,14 @@ function defaultResolve(thisResponse,apiResponse){
     }
 }
 
-/*
 app.use(helmet());
 app.use(
     helmet.contentSecurityPolicy({
         directives:{
-            connectSrc:["wss://api.coin.z.com/ws/public/v1"]
+            connectSrc:["'self'","wss://api.coin.z.com/ws/public/v1"]
         }
     })
 );
-*/
 
 app.use(express.static("img"));
 app.use(express.static("client"));
