@@ -36,8 +36,8 @@ app.use(
     })
 );
 
-app.use(express.static(path.join(__dirname, "img")));
-app.use(express.static(path.join(__dirname, "client")));
+app.use(express.static("img"));
+app.use(express.static("client"));
 //app.use(express.static("svr"));
 app.use(express.json());
 
@@ -52,19 +52,19 @@ app.get("/genkidama", (req, res) => {
     res.sendFile(file);
 });
 
-app.get("/genkidama/ticker", (req, res) => {
+app.get("/ticker", (req, res) => {
     api("ticker")
         .then(apires => defaultResolve(res, apires))
         .catch(err => console.log(err))
 });
 
-app.get("/genkidama/valuation", (req, res) => {
+app.get("/valuation", (req, res) => {
     api("margin")
         .then(apires => defaultResolve(res, apires))
         .catch(e => console.log(e));
 });
 
-app.get("/genkidama/positions", (req, res) => {
+app.get("/positions", (req, res) => {
     const params = req.query;
     api("positions", { "params": params, "keys": ["list"] })
         .then(apires => defaultResolve(res, apires))
@@ -72,7 +72,7 @@ app.get("/genkidama/positions", (req, res) => {
 });
 
 
-app.get("/genkidama/story", (req, res) => {
+app.get("/story", (req, res) => {
     const dir = path.join(__dirname, "story");
     const proms = [];
     fs.readdir(dir, (err, data) => {
@@ -100,7 +100,7 @@ app.get("/genkidama/story", (req, res) => {
     });
 });
 
-app.post("/genkidama/exec", (req, res) => {
+app.post("/exec", (req, res) => {
     const { pair, side, amt, pwd } = req.body;
 
     /**some check? */
@@ -144,7 +144,7 @@ app.post("/genkidama/exec", (req, res) => {
         });
 });
 
-app.post("/genkidama/close", (req, res) => {
+app.post("/close", (req, res) => {
     //"pair":symbol,"side":side,"amt":size,"id":id
     const { pair, side, amt, id } = req.body;
     const body = {
