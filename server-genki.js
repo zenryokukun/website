@@ -48,7 +48,8 @@ app.get("/", (req, res) => {
 });
 
 app.get("/genkidama", (req, res) => {
-    console.log("hello");
+    const file = path.join(__dirname, "client", "index.html");
+    res.sendFile(file);
 });
 
 app.get("/ticker", (req, res) => {
